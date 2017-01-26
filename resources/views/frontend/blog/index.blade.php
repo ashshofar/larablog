@@ -15,24 +15,27 @@
 
     <div class="row">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
-		  			<div class="panel-body">
-		    		<h3 class="card-title">Post Title</h4>
-				    <h5 class="card-subtitle mb-2 text-muted">Post Author | Date</h6>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas assumenda tempore minima sapiente obcaecati ipsum in ut quam delectus. Aliquam consequatur illum maxime culpa, quo dignissimos accusamus alias laudantium. Aliquid.</p>
-					<a href="">Read More</a>
-		  		</div>
-			</div>
 
-			<div class="panel panel-default">
+			@foreach($posts as $post)
+				<div class="panel panel-default">
 		  			<div class="panel-body">
-		    		<h3 class="card-title">Post Title</h4>
-				    <h5 class="card-subtitle mb-2 text-muted">Post Author | Date</h6>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas assumenda tempore minima sapiente obcaecati ipsum in ut quam delectus. Aliquam consequatur illum maxime culpa, quo dignissimos accusamus alias laudantium. Aliquid.</p>
-					<a href="">Read More</a>
-		  		</div>
-			</div>
+			    		<h3 class="card-title">{{ $post->title }}</h4>
+					    <h5 class="card-subtitle mb-2 text-muted">{{ $post->author }} | {{ $post->created_at }}</h6>
+					    <p>{{ $post->body }}</p>
+						<a href="">Read More</a>
+		  			</div>
+				</div>
+			@endforeach
 			
+			@if($posts->lastPage() >1 )
+				@if($posts->currentPage() !== 1)
+					<a href="{{ $posts->previousPageUrl() }}"><i class="fa fa-caret-left"></i></a>
+				@endif
+				@if($posts->currentPage() !== $posts->lastPage())
+					<a href="{{ $posts->previousPageUrl() }}"><i class="fa fa-caret-right"></i></a>
+				@endif
+			@endif
+
 		</div>
 	</div>
 

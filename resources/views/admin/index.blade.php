@@ -13,51 +13,36 @@
 	
 	<div class="row">
 		<div class="col-lg-7">
-
-			
-		
 			<div class="panel panel-default">
 		  		<div class="panel-heading">
 					<a href=" {{ route('admin.blog.create_post') }}" class="btn btn-primary">New Post</a>
 					<a href="" class="btn btn-info">Show all Posts</a>
 		  		</div>
+
+		  		
 		  		<div class="panel-body">
+		   	 	@if(count($posts) == 0)	
 		   	 		<div class="panel panel-default">
 		  				<div class="panel-body">
 		    				<h4 class="card-title">No Posts</h4>
 						</div>
 					</div>
 
-					<div class="panel panel-default">
-		  				<div class="panel-body">
-		    				<h4 class="card-title">Post Title</h4>
-						    <h6 class="card-subtitle mb-2 text-muted">Post Author | Date</h6>
-						    <a href="" class="btn btn-success btn-xs">View Post</a>
-							<a href="" class="btn btn-info btn-xs">Edit</a>
-							<a href="" class="btn btn-danger btn-xs">Delete</a>
-		  				</div>
-					</div>
-
-					<div class="panel panel-default">
-		  				<div class="panel-body">
-		    				<h4 class="card-title">Post Title</h4>
-						    <h6 class="card-subtitle mb-2 text-muted">Post Author | Date</h6>
-						    <a href="" class="btn btn-success btn-xs">View Post</a>
-							<a href="" class="btn btn-info btn-xs">Edit</a>
-							<a href="" class="btn btn-danger btn-xs">Delete</a>
-		  				</div>
-					</div>
-
-					<div class="panel panel-default">
-		  				<div class="panel-body">
-		    				<h4 class="card-title">Post Title</h4>
-						    <h6 class="card-subtitle mb-2 text-muted">Post Author | Date</h6>
-						    <a href="" class="btn btn-success btn-xs">View Post</a>
-							<a href="" class="btn btn-info btn-xs">Edit</a>
-							<a href="" class="btn btn-danger btn-xs">Delete</a>
-		  				</div>
-					</div>
-		 		</div>
+				@else
+					@foreach($posts as $post)
+						<div class="panel panel-default">
+			  				<div class="panel-body">
+			    				<h4 class="card-title">{{ $post->title }}</h4>
+							    <h6 class="card-subtitle mb-2 text-muted">{{ $post->author }} | {{ $post->created_at }}</h6>
+							    <a href="" class="btn btn-success btn-xs">View Post</a>
+								<a href="" class="btn btn-info btn-xs">Edit</a>
+								<a href="" class="btn btn-danger btn-xs">Delete</a>
+			  				</div>
+						</div>
+					@endforeach
+				@endif
+				</div>
+		 		
 			</div>
 		</div>
 
