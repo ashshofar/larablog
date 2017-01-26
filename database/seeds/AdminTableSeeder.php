@@ -13,7 +13,7 @@ class AdminTableSeeder extends Seeder
     {
         $admin = new \App\Admin();
         $admin->email = "test@test.com";
-        $admin->password = brcrypt("test_pw");
+        $admin->password = bcrypt("test_pw");
         $admin->save();
     }
 }

@@ -35,3 +35,24 @@ Route::get('/contact', [
 	'uses' => 'ContactMessageController@getContactIndex',
 	'as' => 'contact'
 ]);
+
+
+
+Route::group([
+	'prefix' => '/admin'
+], function(){
+	Route::get('/',[
+		'uses' => 'AdminController@getIndex',
+		'as' => 'admin.index'
+	]);
+
+	Route::get('/blog/posts/create', [
+		'uses' => 'PostController@getCreatePost',
+		'as' => 'admin.blog.create_post'
+	]);
+
+	Route::post('/blog/posts/create', [
+		'uses' => 'PostController@postCreatePost',
+		'as' => 'admin.blog.post.create'
+	]);
+});

@@ -7,5 +7,5 @@ use Illuminate\Auth\Authenticatable;
 
 class Admin extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 {
-    
+    use Authenticatable;
 }
